@@ -1,0 +1,324 @@
+.header {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 2%;
+    padding: 0 30px;
+}
+
+.header-logo {
+    width: 44px;
+}
+
+.header-title {
+    font-weight: 500;
+    font-size: 26px;
+}
+
+.card {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background: #ffffff;
+    transition: 0.3s;
+    overflow: auto;
+}
+
+.buttons {
+    padding-right: 20px;
+    width: 40%;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.wrapper {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 400px;
+    overflow: auto;
+}
+
+.wrapper::before,
+.wrapper::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    width: 100%;
+}
+
+.wrapper::before {
+    top: 0;
+    background: linear-gradient(#ffffff, rgb(255 255 255 / 0%));
+}
+
+.wrapper::after {
+    bottom: 0;
+    background: linear-gradient(rgb(255 255 255 / 0%), #ffffff);
+}
+
+.content {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    margin: 0;
+    transition: 0.6s;
+}
+
+.content p {
+    display: flex;
+    align-items: center;
+    line-height: 1.6;
+    font-size: 13px;
+    color: #222222;
+    opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+    .card {
+        flex-direction: column;
+    }
+
+    .buttons {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+        padding: 15px 0 0;
+    }
+}
+
+.task {
+    width: 100%;
+    margin-bottom: 12px;
+    font-size: 14px;
+    padding: 6px 12px;
+    background: transparent;
+    border-radius: 6px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5%;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    color: #222222;
+    text-align: left;
+}
+
+.task:hover {
+    background: #cccccc4d;
+}
+
+.task.active {
+    background: #6d63ff;
+    color: #fff;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.edit_icons {
+    display: none;
+    max-width: 20px;
+}
+
+.task.active .edit_icons {
+    display: block;
+}
+
+.task:hover .edit_icons {
+    display: block;
+}
+
+.activeBlock {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.activeBlock-title {
+    width: 100%;
+    border: none;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.activeBlock-title:focus-visible {
+    outline-color: #6d63ff;
+}
+
+.activeBlock-text {
+    padding: 8px;
+    width: 100%;
+}
+
+.saveSuccess {
+    text-align: center;
+    color: #0cce6b;
+}
+
+.text {
+    display: flex;
+    text-align: center;
+    width: max-content;
+    height: 500px;
+    margin: auto;
+    align-items: center;
+    color: #222222;
+    opacity: 0.5;
+}
+
+@media (max-width: 780px) {
+    .activeBlock {
+        padding: 0;
+        gap: 3vw;
+        height: max-content;
+    }
+}
+
+.ui_checkbox {
+    --primary-color: #1677ff;
+    --secondary-color: #fff;
+    --primary-hover-color: #4096ff;
+    /* checkbox */
+    --checkbox-diameter: 20px;
+    --checkbox-border-radius: 5px;
+    --checkbox-border-color: #d9d9d9;
+    --checkbox-border-width: 1px;
+    --checkbox-border-style: solid;
+    /* checkmark */
+    --checkmark-size: 1.2;
+}
+
+.ui_checkbox,
+.ui_checkbox *,
+.ui_checkbox *::before,
+.ui_checkbox *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ui_checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: var(--checkbox-diameter);
+    height: var(--checkbox-diameter);
+    border-radius: var(--checkbox-border-radius);
+    background: var(--secondary-color);
+    border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.ui_checkbox::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+    box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+    border-radius: inherit;
+    opacity: 0;
+    -webkit-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+    -o-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+    transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+
+.ui_checkbox::before {
+    top: 40%;
+    left: 50%;
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 7px;
+    border-right: 2px solid var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    opacity: 0;
+    -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+    -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+    transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+}
+
+.ui_checkbox:hover {
+    border-color: var(--primary-color);
+}
+
+.ui_checkbox:checked {
+    background: var(--primary-color);
+    border-color: transparent;
+}
+
+.ui_checkbox:checked::before {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+    -ms-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+    transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+    -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
+
+.ui_checkbox:active:not(:checked)::after {
+    -webkit-transition: none;
+    -o-transition: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition: none;
+    opacity: 1;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #6d63ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: max-content;
+    margin: 0 auto;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px 30px;
+    display: flex;
+    gap: 15px;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+
+.footer-content {
+    font-size: 14px;
+    color: #222222;
+    opacity: 0.5;
+}
