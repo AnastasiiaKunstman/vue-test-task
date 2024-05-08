@@ -34,3 +34,4 @@ npm run dev
 ```
 
 ## Ссылка на проект:
+https://vue3-test-task-one.vercel.app
